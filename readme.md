@@ -86,7 +86,8 @@ Session：代表一个会话，一个会话中有多个步骤（StepAction）
 
 接下来，这个方法也出现了局限。如果我要在之间加一个方法，还是需要做 xml 的编写工作，而且极易搞错。于是我又编写了一个可视化工具：AutoMatedDataModifer 。直接打开可以编写一个新的 xml 文件；如果把已有的 xml 拖到这个 exe 上打开，就可以读取这个 xml 的内容，并进行可视化。修改后可以再次保存为 xml 文件，这个工具可以保证 StepNumber 不重复。不过有个小意外，我忘记了加删除的功能 Orz，问题不大，等下次有空再加吧。这个工具还有个缺陷是不支持编写 loop Action，不过我想聪明的孩子会新建新的 xml ，再复制回原来的 xml。
 
-所以我设计的使用方式是：先打开【步骤记录器】，然后将要测试的部分跑一遍，得到【mht文件】，再使用【mhtConvert.py】脚本转换得到【xml数据文件】，然后使用【AutoMatedDataModifer.exe】对脚本进行一次修改。之后就可以使用了。当然可能还有可以改进的部分，如果有好主意，可以联系我 email: `wxRachel@Outlook.com` 。
+所以我设计的使用方式是：先打开【步骤记录器】，然后将要测试的部分跑一遍，得到【mht文件】，再使用【mhtConvert.py】脚本转换得到【xml数据文件】，然后使用【AutoMatedDataModifer.exe】对脚本进行一次修改。之后运行【doAutomatedTest.py】就可以使用了。当然可能还有可以改进的部分，如果有好主意，可以联系我 email: `wxRachel@Outlook.com` 。
 
- 
+再唠叨一下注意事项，【mhtConvert.py】和【doAutomatedTest.py】运行前，需要修改一下输入输出的url。数据校验、异常处理也还没有做，所以需要按照规范填写数据。下一个版本或许会优化吧。
+
 愿所有测试同事都被温柔以待，快乐工作~
