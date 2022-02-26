@@ -1,0 +1,93 @@
+<Session>
+  <StepAction StepNumber="0">
+    <Location>absolute</Location>
+    <LocationXY>444,420</LocationXY>
+    <VisualImagePath>0</VisualImagePath>
+    <Action type="left_mouse_click" param="1">1</Action>
+    <Duration>1</Duration>
+    <Broke />
+    <ReTry />
+  </StepAction>
+  <StepAction StepNumber="1">
+    <Location>visualization</Location>
+    <LocationXY />
+    <VisualImagePath>0</VisualImagePath>
+    <Action type="key_down" param="1">1</Action>
+    <Duration>1</Duration>
+    <Broke />
+    <ReTry />
+  </StepAction>
+  <StepAction StepNumber="2">
+    <Location>visualization</Location>
+    <LocationXY />
+    <VisualImagePath>0</VisualImagePath>
+    <Action type="loop" loopBegin="3,4" loopEnd="5" vars="6;7;8,9">
+      <StepAction StepNumber="3">
+        <Location>visualization</Location>
+        <LocationXY />
+        <VisualImagePath>0</VisualImagePath>
+        <Action type="key_down" param="3">3</Action>
+        <Duration>1</Duration>
+        <Broke />
+        <ReTry />
+      </StepAction>
+      <StepAction StepNumber="4">
+        <Location>visualization</Location>
+        <LocationXY />
+        <VisualImagePath>0</VisualImagePath>
+        <Action type="key_down" param="4">4</Action>
+        <Duration>1</Duration>
+        <Broke />
+        <ReTry />
+      </StepAction>
+      <StepAction StepNumber="5">
+        <Location>visualization</Location>
+        <LocationXY />
+        <VisualImagePath>0</VisualImagePath>
+        <Action type="key_down" param="5">5</Action>
+        <Duration>1</Duration>
+        <Broke />
+        <ReTry />
+      </StepAction>
+      <StepAction StepNumber="6">
+        <Location>visualization</Location>
+        <LocationXY />
+        <VisualImagePath>0</VisualImagePath>
+        <Action type="key_down" param="6">6</Action>
+        <Duration>1</Duration>
+        <Broke />
+        <ReTry />
+      </StepAction>
+      <StepAction StepNumber="7">
+        <Location>visualization</Location>
+        <LocationXY />
+        <VisualImagePath>0</VisualImagePath>
+        <Action type="key_down" param="7">7</Action>
+        <Duration>1</Duration>
+        <Broke />
+        <ReTry />
+      </StepAction>
+      <StepAction StepNumber="8">
+        <Location>visualization</Location>
+        <LocationXY />
+        <VisualImagePath>0</VisualImagePath>
+        <Action type="key_down" param="8">8</Action>
+        <Duration>1</Duration>
+        <Broke />
+        <ReTry />
+      </StepAction>
+      <StepAction StepNumber="9">
+        <Location>visualization</Location>
+        <LocationXY />
+        <VisualImagePath>0</VisualImagePath>
+        <Action type="key_down" param="9">9</Action>
+        <Duration>1</Duration>
+        <Broke />
+        <ReTry />
+      </StepAction>
+    </Action>
+    <Duration>1</Duration>
+    <Broke />
+    <ReTry />
+  </StepAction>
+</Session>

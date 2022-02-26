@@ -1,0 +1,96 @@
+﻿<Window x:Class="AutoMatedDataModifier.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:input="clr-namespace:System.Windows.Input;assembly=PresentationCore"
+        xmlns:local="clr-namespace:AutoMatedDataModifier"
+        mc:Ignorable="d"
+        Title="{Binding Path}" Height="500" Width="650">
+
+    <Window.Resources>
+        <Style TargetType="TextBlock" x:Key="DescriptionStyle">
+            <Setter Property="Foreground" Value="Gray"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <WrapPanel Margin="10">
+                <TextBlock Text="StepNumber" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding CurrentStepAction.StepNumber}" VerticalAlignment="Center" Margin="5,0"/>
+            </WrapPanel>
+            <WrapPanel Margin="10">
+                <TextBlock Text="Location" VerticalAlignment="Center"/>
+                <ComboBox Width="200" Margin="5,0" SelectedItem="{Binding CurrentStepAction.Location}" ItemsSource="{Binding LocationList}"></ComboBox>
+                <TextBlock Text="(abslute：绝对位置，visualization：相对位置)"  VerticalAlignment="Center" Style="{StaticResource DescriptionStyle}"/>
+            </WrapPanel>
+            <WrapPanel Margin="10" Visibility="{Binding CurrentStepAction.Location,Converter={StaticResource viewVisible}, ConverterParameter=LocationXY}">
+                <TextBlock Text="LocationXY" VerticalAlignment="Center"/>
+                <TextBox Width="100" Margin="5,0" Text="{Binding CurrentStepAction.LocationXY}"></TextBox>
+                <TextBlock Text="(格式：x,y 注意逗号要是英文逗号，数字不能带小数点)" VerticalAlignment="Center" Style="{StaticResource DescriptionStyle}"/>
+            </WrapPanel>
+            <WrapPanel Margin="10" Visibility="{Binding CurrentStepAction.Location,Converter={StaticResource viewVisible}, ConverterParameter=VisualImagePath}">
+                <TextBlock Text="VisualImagePath" VerticalAlignment="Center"/>
+                <TextBox Width="100" Margin="5,0" Text="{Binding CurrentStepAction.VisualImagePath}"></TextBox>
+                <TextBlock Text="(图片的路径，可以填相对于生成的 xml 的相对路径 或 绝对路径)" VerticalAlignment="Center" Style="{StaticResource DescriptionStyle}"/>
+            </WrapPanel>
+            <GroupBox Header="ActionGroup">
+                <StackPanel>
+                    <WrapPanel Margin="10">
+                        <TextBlock Text="Type" VerticalAlignment="Center"/>
+                        <ComboBox Width="200" Margin="5,0" SelectedItem="{Binding CurrentStepAction.Action.Type}" ItemsSource="{Binding ActionTypeList}"></ComboBox>
+                        <TextBlock Text="(~)" VerticalAlignment="Center" Style="{StaticResource DescriptionStyle}"/>
+                    </WrapPanel>
+                    <WrapPanel Margin="10" Visibility="{Binding CurrentStepAction.Action.Type,Converter={StaticResource viewVisible}, ConverterParameter=ActionParam}">
+                        <TextBlock Text="param" VerticalAlignment="Center"/>
+                        <TextBox Width="100" Margin="5,0" Text="{Binding CurrentStepAction.Action.Param}" input:InputMethod.IsInputMethodEnabled="False"></TextBox>
+                        <TextBlock Text="(参数，如果是鼠标事件就是鼠标点击次数，键盘事件就是键盘的 key 值)" VerticalAlignment="Center" Style="{StaticResource DescriptionStyle}"/>
+                    </WrapPanel>
+                    <WrapPanel Margin="10">
+                        <TextBlock Text="Discription" VerticalAlignment="Center"/>
+                        <TextBox Width="300" Margin="5,0" Text="{Binding CurrentStepAction.Action.Value}"></TextBox>
+                        <TextBlock Text="(事件描述)" VerticalAlignment="Center" Style="{StaticResource DescriptionStyle}"/>
+                    </WrapPanel>
+                </StackPanel>
+            </GroupBox>
+            <WrapPanel Margin="10">
+                <TextBlock Text="Duration" VerticalAlignment="Center"/>
+                <TextBox Width="100" Margin="5,0" Text="{Binding CurrentStepAction.Duration}" input:InputMethod.IsInputMethodEnabled="False" ></TextBox>
+                <TextBlock Text="(完成后暂停的事件，单位为 s)" VerticalAlignment="Center" Style="{StaticResource DescriptionStyle}"/>
+            </WrapPanel>
+            <WrapPanel Margin="10">
+                <TextBlock Text="Broke" VerticalAlignment="Center"/>
+                <RadioButton Margin="5,0">True</RadioButton>
+                <RadioButton Margin="5,0">False</RadioButton>
+                <TextBlock Text="(暂无)" VerticalAlignment="Center" Style="{StaticResource DescriptionStyle}"/>
+            </WrapPanel>
+            <WrapPanel Margin="10">
+                <TextBlock Text="ReTry" VerticalAlignment="Center"/>
+                <RadioButton Margin="5,0">True</RadioButton>
+                <RadioButton Margin="5,0">False</RadioButton>
+                <TextBlock Text="(暂无)" VerticalAlignment="Center" Style="{StaticResource DescriptionStyle}"/>
+            </WrapPanel>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="3*"/>
+                <!--<ColumnDefinition Width="2*"/>-->
+            </Grid.ColumnDefinitions>
+            <Button Content="向前+" Width="50" Height="30" Background="White" Command="{Binding InsertPrevCommand}"/>
+            <Button Grid.Column="1" Content="上一步" Width="50" Height="30" Background="White" Command="{Binding PrevCommand}"/>
+            <Button Grid.Column="2" Content="下一步" Width="50" Height="30" Background="White" Command="{Binding NextCommand}"/>
+            <Button Grid.Column="3" Content="向后+" Width="50" Height="30" Background="White" Command="{Binding InsertNextCommand}"/>
+            <Button Grid.Column="4" Content="保存" Width="80" Height="30" Background="Orange" HorizontalAlignment="Center" Command="{Binding SaveCommand}"/>
+            <!--<Button Grid.Column="5" Content="保存并执行" Width="80" Height="30" Background="AliceBlue" Command="{Binding SaveAndRunCommand}"/>-->
+
+        </Grid>
+    </Grid>
+</Window>
